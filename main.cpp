@@ -1,34 +1,26 @@
-#include <iostream>
-
+#include "std_lib_facilities.h"
+#include "Token.h"
+#include "Token_stream.h"
 
 int main() {
-	std::cout << "Arbol - nodo" << std::endl;
-	
-	return EXIT_SUCCESS;
+	try{
+		double val = 0;
+		Token_stream ts;
+		while (std::cin) {
+			Token t = ts.get();
+			if (t.kind == 'q')break;
+			if (t.kind == ';') {
+				std::cout << "=" << val << std::endl;
+			}
+			else {
+				ts.putback(t);		
+			}
+			val = expression();
+
+		}
+	}
+	catch (std::invalid_argument e)
+	{
+
+	}
 }
-
-class Nodo {
-private: 
-public:
-	int* Nodeleft;
-	int* nodeRight;
-
-};
-
-
-class Arbol {
-private:
-
-public:
-	int* nodeRoot;
-
-	int agregarNodoIzquierdo(int posicion) {
-
-	}
-	int eliminarNodoDerecha(int posicion) {
-
-	}
-	int modificarNodo() {
-
-	}
-};
